@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=3 uid="uid://bqd0miqspr7a3"]
+
+[ext_resource type="Texture2D" uid="uid://cafvjnsyspl35" path="res://Assets/Soldier/Soldier with shadows/Soldier-Idle.png" id="1_i16h8"]
+[ext_resource type="Script" path="res://Scripts/Soldier.cs" id="1_vuq3v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1i4xu"]
+atlas = ExtResource("1_i16h8")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05ba0"]
+atlas = ExtResource("1_i16h8")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dyuau"]
+atlas = ExtResource("1_i16h8")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wmgx"]
+atlas = ExtResource("1_i16h8")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdm7x"]
+atlas = ExtResource("1_i16h8")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jf0r"]
+atlas = ExtResource("1_i16h8")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4o54b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1i4xu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05ba0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dyuau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wmgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdm7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jf0r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_itf5y"]
+size = Vector2(14, 9)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pxkjl"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.289644, 0.681068, 0.428488, 1)
+border_blend = true
+
+[node name="Soldier" type="CharacterBody2D"]
+script = ExtResource("1_vuq3v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -14)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_4o54b")
+autoplay = "default"
+frame_progress = 0.504445
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -4.5)
+shape = SubResource("RectangleShape2D_itf5y")
+
+[node name="Box" type="Panel" parent="."]
+unique_name_in_owner = true
+offset_left = -10.0
+offset_top = -19.0
+offset_right = 10.0
+offset_bottom = 1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pxkjl")

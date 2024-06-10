@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dgm3rt0tdckuf"]
 
-[ext_resource type="Script" path="res://Scenes/Camera.cs" id="1_l34m3"]
-[ext_resource type="Texture2D" uid="uid://2tcajlc2decg" path="res://icon.svg" id="2_w0frj"]
+[ext_resource type="Script" path="res://Scenes/Camera.cs" id="1_h8gmd"]
+[ext_resource type="Texture2D" uid="uid://2tcajlc2decg" path="res://icon.svg" id="2_61yoi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ag7nx"]
 bg_color = Color(0.0962048, 0.0962047, 0.0962047, 0.341176)
@@ -19,7 +19,7 @@ corner_radius_bottom_left = 2
 [node name="Camera" type="Camera2D" parent="."]
 limit_left = 0
 limit_top = 0
-script = ExtResource("1_l34m3")
+script = ExtResource("1_h8gmd")
 
 [node name="SelectionPanel" type="Panel" parent="."]
 unique_name_in_owner = true
@@ -30,4 +30,4 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ag7nx")
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(489, 251)
-texture = ExtResource("2_w0frj")
+texture = ExtResource("2_61yoi")

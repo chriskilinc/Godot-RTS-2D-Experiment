@@ -4,22 +4,22 @@ using System.IO;
 
 public partial class Camera : Camera2D
 {
-    Vector2 _mousePosition = new Vector2();
-    Vector2 _mousePositionGlobal = new Vector2();
-    Vector2 _start = new Vector2();
-    Vector2 _startV = new Vector2();
-    Vector2 _end = new Vector2();
-    Vector2 _endV = new Vector2();
-    bool _isDragging = false;
+    public Vector2 _mousePosition = new Vector2();
+    public Vector2 _mousePositionGlobal = new Vector2();
+    public Vector2 _start = new Vector2();
+    public Vector2 _startV = new Vector2();
+    public Vector2 _end = new Vector2();
+    public Vector2 _endV = new Vector2();
+    public bool _isDragging = false;
 
     Panel _selectionPanel;
 
     // signal
     [Signal]
-    public delegate void AreaSelectedEventHandler(Vector2 position);
+    public delegate void AreaSelectedEventHandler();
 
     [Signal]
-    public delegate void StartMoveSelectionEventHandler(Vector2 position);
+    public delegate void StartMoveSelectionEventHandler(Camera camera);
 
 
 
@@ -27,8 +27,7 @@ public partial class Camera : Camera2D
     {
         // Called every time the node is added to the scene.
         _selectionPanel = GetNode<Panel>("%SelectionPanel");
-        _selectionPanel.Visible = false;
-
+        AreaSelected += OnAreaSelected;
     }
 
     public override void _Process(double delta)
@@ -56,7 +55,7 @@ public partial class Camera : Camera2D
                 _endV = _mousePosition;
                 _isDragging = false;
                 DrawArea(false);
-                // EmitSignal(nameof(AreaSelectedEventHandler));
+                EmitSignal(SignalName.AreaSelected, this);
             }
             else
             {
@@ -87,6 +86,11 @@ public partial class Camera : Camera2D
         };
         _selectionPanel.Position = position;
         _selectionPanel.Size *= s ? 1 : 0;
-        _selectionPanel.Visible = s;
+    }
+
+    public void OnAreaSelected()
+    {
+        // EmitSignal(nameof(AreaSelectedEventHandler));
+        // GD.Print("Area selected");
     }
 }

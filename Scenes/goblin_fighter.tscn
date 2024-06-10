@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://7h7jv37eo2r4"]
+
+[ext_resource type="Script" path="res://Scripts/GoblinFighter.cs" id="1_83pei"]
+[ext_resource type="Texture2D" uid="uid://bn3xjq0xh8ooq" path="res://Assets/Basic Asset Pack/Basic Humanoid Animations/goblin fighter/GoblinFighter.png" id="2_k8354"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3c8l"]
+atlas = ExtResource("2_k8354")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vy48p"]
+atlas = ExtResource("2_k8354")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_va884"]
+atlas = ExtResource("2_k8354")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hca3"]
+atlas = ExtResource("2_k8354")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v2jp2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3c8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vy48p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_va884")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hca3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4yrr"]
+size = Vector2(8, 10)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ynq1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.289644, 0.681068, 0.428488, 1)
+border_blend = true
+
+[node name="GoblinFighter" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_83pei")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_v2jp2")
+autoplay = "default"
+frame_progress = 0.161154
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -10)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_s4yrr")
+
+[node name="Box" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = -18.5
+offset_top = -33.0
+offset_right = 17.5
+offset_bottom = 3.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6ynq1")
+metadata/_edit_use_anchors_ = true
